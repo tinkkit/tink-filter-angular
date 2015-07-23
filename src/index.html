@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="tink.skeleton">
+<html ng-app="tink.filter">
 <head>
   <meta charset="utf-8">
   <title>Tink module</title>
@@ -7,15 +7,123 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0">
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/tink-core/dist/tink.css" />
   <!-- endbower -->
 </head>
-<body>
+<body ng-controller="ctrl">
 
-<tink-skeleton data-text="Skeleton is working fine!"></tink-skeleton>
+<tink-filter ng-model="data" />
 
 <!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
 <!-- endbower -->
+<script>
+  (function(module) {
+    try {
+      module = angular.module('tink.filter');
+    } catch (e) {
+      module = angular.module('tink.filter', []);
+    }
+    module.controller('ctrl', ['$scope',function (scope) {
+      scope.data = [{
+          name:'Categorie',
+          selections:[
+          {
+            name:'Persoongegevens'
+          },
+          {
+            name:'Adresgegevens'
+          },
+          {
+            name:'Gezin'
+          },
+          {
+            name:'Werk & financieel'
+          },
+          {
+            name:'Afstamming'
+          },
+          {
+            name:'Vertegenwoordiging'
+          }]
+        },{
+        name:'Type',
+        selections:[
+        {
+          name:'Admin. toestand'
+        },
+        {
+          name:'Burgelijke staat',
+          selections:[
+          {
+            name:'Test',
+            selections:[
+            {
+              name:'iet anders'
+            },
+            {
+              name:'nog iet'
+            }
+            ]
+          },
+          {
+            name:'dier',
+            selections:[
+            {
+              name:'hond'
+            },
+            {
+              name:'kat'
+            }
+            ]
+          }
+          ]
+        },
+        {
+          name:'Geboorte & overlijden'
+        },
+        {
+          name:'identiteitsbewijzen'
+        },
+        {
+          name:'Naam',
+          selections:[
+          {
+            name:'Options',
+            selections:[
+            {
+              name:'oke'
+            },
+            {
+              name:'test'
+            }
+            ]
+          }
+          ]
+        },
+        {
+          name:'Nationaliteit'
+        },
+        {
+          name:'Rijkregister'
+        },
+        {
+          name:'Vingerafdruk'
+        }
+        ]
+      }]
+    }]);
+})();
 
-<script src="scripts/directives/skeleton.js"></script>
+</script>
+<script src="scripts/directives/filter.js"></script>
+<script src="scripts/directives/selectbox.js"></script>
 </body>
 </html>

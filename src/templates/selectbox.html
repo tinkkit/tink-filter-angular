@@ -1,0 +1,7 @@
+<div class="form-group">
+  <label ng-bind="ctrl.getTitle()"></label>
+  <div ng-repeat="box in ctrl.getSelections()" class="checkbox">
+    <input type="checkbox" id="{{$id}}-{{$index}}" ng-model="box.checked" ng-change="ctrl.callback(box)" name="{{$id}}-{{$index}}" value="{{box.name}}">
+    <label for="{{$id}}-{{$index}}" ng-bind="box.name"></label>
+  </div>
+</div>
