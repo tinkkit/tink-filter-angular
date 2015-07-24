@@ -9,7 +9,8 @@
     return {
       restrict: 'EA',
       scope: {
-        ngModel:'='
+        ngModel:'=',
+        tinkSelected:'='
       },
       templateUrl: 'templates/filter.html',
       replace: true,
@@ -44,9 +45,13 @@
         scope.$watch('ngModel',function(values){
           angular.forEach(values,function(val){
             //angular copy so it won't be bidirectional.
-            ctrl.addSelectBox(angular.copy(val));
+            ctrl.addSelectBox(val);
            });          
         });
+
+        scope.$watch('tinkSelected',function(newValue){
+
+        })
 
         scope.boxChanged = function(data,parent){console.log(data)
           if(parent && parent.linkedObj){

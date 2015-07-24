@@ -5,7 +5,7 @@
   } catch (e) {
     module = angular.module('tink.filter', ['tink.safeApply']);
   }
-  module.directive('tinkSelectBox', [function () {
+  module.directive('tinkSelectBox', ['$filter',function ($filter) {
     return {
       restrict: 'EA',
       templateUrl: 'templates/selectbox.html',
@@ -43,16 +43,16 @@
           return selectbox.selection;
         }
         ctrl.callback = function(data){
-          if(data.checked){
-            if(angular.isDefined($scope.selectedBox)){
-              $scope.selectedBox.checked = false;
-              $scope.selectChange({$data:$scope.selectedBox});
+          var selected = $filter('filter')($scope.ngModel.selections, {checked: true});
+          angular.forEach(selected,function(v){
+            if(v !== data){
+              v.checked = false;
+              $scope.selectChange({$data:v,$parent:selectbox.parent});
             }
-            $scope.selectedBox = data;
-          }else if(data.checked === false){
-            $scope.selectedBox = undefined;
+          })
+          if(data.checked){
+            $scope.selectChange({$data:data,$parent:selectbox.parent});
           }
-          $scope.selectChange({$data:data,$parent:selectbox.parent});
         }
 
       },
