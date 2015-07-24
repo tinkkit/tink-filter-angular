@@ -3,7 +3,7 @@
   try {
     module = angular.module('tink.filter');
   } catch (e) {
-    module = angular.module('tink.filter', ['nouislider','tink.safeApply']);
+    module = angular.module('tink.filter', ['tink.safeApply']);
   }
   module.directive('tinkFilter', [function () {
     return {
@@ -38,9 +38,7 @@
           var index = selectboxen.indexOf(selectbox);
           selectboxen = selectboxen.splice(0,2);
         };
-          ctrl.from = new Date('2010');
-        ctrl.to = new Date('2050');
-        console.log(ctrl.from,ctrl.to)
+
       },
       link: function(scope,elem,attr,ctrl) {
         scope.$watch('ngModel',function(values){

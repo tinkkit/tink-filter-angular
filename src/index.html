@@ -13,7 +13,9 @@
 </head>
 <body ng-controller="ctrl">
 
-<tink-filter ng-model="data" />
+<tink-filter ng-model="data"></tink-filter>
+<div slider start="from" end="to"  step="5" callback='set'></div><br/><br/>
+<tink-filter ng-model="data"></tink-filter>
 
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -32,9 +34,11 @@
     try {
       module = angular.module('tink.filter');
     } catch (e) {
-      module = angular.module('tink.filter', ['nouislider']);
+      module = angular.module('tink.filter', ['tink.safeApply']);
     }
     module.controller('ctrl', ['$scope',function (scope) {
+        scope.from = new Date('2010');
+        scope.to = new Date('2050');
       scope.data = [{
           name:'Categorie',
           linkName:'type',

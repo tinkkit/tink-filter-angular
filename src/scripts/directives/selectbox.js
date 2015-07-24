@@ -3,7 +3,7 @@
   try {
     module = angular.module('tink.filter');
   } catch (e) {
-    module = angular.module('tink.filter', ['nouislider','tink.safeApply']);
+    module = angular.module('tink.filter', ['tink.safeApply']);
   }
   module.directive('tinkSelectBox', [function () {
     return {

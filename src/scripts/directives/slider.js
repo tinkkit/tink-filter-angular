@@ -1,5 +1,11 @@
 'use strict';
-angular.module('nouislider', ['tink.safeApply']).directive('slider', function (safeApply) {
+(function(module) {
+  try {
+    module = angular.module('tink.filter');
+  } catch (e) {
+    module = angular.module('tink.filter', ['tink.safeApply']);
+  }
+  module.directive('slider', function (safeApply) {
   return {
     restrict: 'A',
     scope: {
@@ -53,3 +59,4 @@ angular.module('nouislider', ['tink.safeApply']).directive('slider', function (s
     }
   };
 });
+})();

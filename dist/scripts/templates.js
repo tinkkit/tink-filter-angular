@@ -2,7 +2,7 @@ angular.module('tink.filter').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('templates/filter.html',
-    "<div> filteren: <div ng-repeat=\"selectBox in ctrl.getSelectBoxen()\"> <tink-select-box ng-model=selectBox select-change=boxChanged($data,$parent)></tink-select-box> <tink-select-box ng-if=selectBox.linkName ng-model=selectBox.linkedObj select-change=boxChanged($data)> </tink-select-box> </div> <div slider start=ctrl.from end=ctrl.to step=5 callback=set></div> </div>"
+    "<div> <div ng-repeat=\"selectBox in ctrl.getSelectBoxen()\"> <tink-select-box ng-model=selectBox select-change=boxChanged($data,$parent)></tink-select-box> <tink-select-box ng-if=selectBox.linkName ng-model=selectBox.linkedObj select-change=boxChanged($data)> </tink-select-box> </div> </div>"
   );
 
 
