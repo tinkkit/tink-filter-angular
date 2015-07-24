@@ -8,6 +8,7 @@
   <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0">
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/tink-core/dist/tink.css" />
+  <link rel="stylesheet" href="bower_components/nouislider/distribute/nouislider.min.css" />
   <!-- endbower -->
 </head>
 <body ng-controller="ctrl">
@@ -23,29 +24,104 @@
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/nouislider/distribute/nouislider.js"></script>
+<script src="bower_components/tink-helper-safe-apply-angular/dist/tink-helper-safe-apply-angular.js"></script>
 <!-- endbower -->
 <script>
   (function(module) {
     try {
       module = angular.module('tink.filter');
     } catch (e) {
-      module = angular.module('tink.filter', []);
+      module = angular.module('tink.filter', ['nouislider']);
     }
     module.controller('ctrl', ['$scope',function (scope) {
       scope.data = [{
           name:'Categorie',
+          linkName:'type',
           selections:[
           {
-            name:'Persoongegevens'
+            name:'Persoongegevens',
+            link:[
+              {
+                name:'Administratieve toestand'
+              },
+              {
+                name:'Burgerlijke staat'
+              },
+              {
+                name:'Geboorte & overlijden'
+              },
+              {
+                name:'Identiteitsbewijzen'
+              },
+              {
+                name:'Naam'
+              },
+              {
+                name:'Nationaliteit'
+              },
+              {
+                name:'Rijksregisternummer'
+              },
+              {
+                name:'Vingerafdruk'
+              }
+            ]
           },
           {
-            name:'Adresgegevens'
+            name:'Adresgegevens',
+            link:[
+              {
+                name:'Adreswijziging'
+              },
+              {
+                name:'Afwezigheid'
+              },
+              {
+                name:'Aanvraag inschrijving'
+              },
+              {
+                name:'Buitenlands adres'
+              },
+              {
+                name:'Verblijfsadres'
+              },
+              {
+                name:'Hoofdverblijfplaats'
+              },
+              {
+                name:'Verzendadres'
+              },
+              {
+                name:'Wettelijke woonplaats'
+              }
+            ]
           },
           {
-            name:'Gezin'
+            name:'Gezin',
+            link:[
+            {
+              name:'Gezinssamenstelling'
+            },
+            {
+              name:'Wettelijk samenwonen'
+            }]
           },
           {
-            name:'Werk & financieel'
+            name:'Werk & financieel',
+            link:[
+            {
+              name:'Arbeidskaart'
+            },
+            {
+              name:'Beroep'
+            },
+            {
+              name:'Beroepskaart'
+            },
+            {
+              name:'Rekening'
+            }]
           },
           {
             name:'Afstamming'
@@ -53,77 +129,13 @@
           {
             name:'Vertegenwoordiging'
           }]
-        },{
-        name:'Type',
-        selections:[
-        {
-          name:'Admin. toestand'
-        },
-        {
-          name:'Burgelijke staat',
-          selections:[
-          {
-            name:'Test',
-            selections:[
-            {
-              name:'iet anders'
-            },
-            {
-              name:'nog iet'
-            }
-            ]
-          },
-          {
-            name:'dier',
-            selections:[
-            {
-              name:'hond'
-            },
-            {
-              name:'kat'
-            }
-            ]
-          }
-          ]
-        },
-        {
-          name:'Geboorte & overlijden'
-        },
-        {
-          name:'identiteitsbewijzen'
-        },
-        {
-          name:'Naam',
-          selections:[
-          {
-            name:'Options',
-            selections:[
-            {
-              name:'oke'
-            },
-            {
-              name:'test'
-            }
-            ]
-          }
-          ]
-        },
-        {
-          name:'Nationaliteit'
-        },
-        {
-          name:'Rijkregister'
-        },
-        {
-          name:'Vingerafdruk'
-        }
-        ]
-      }]
+        }]
     }]);
 })();
 
 </script>
 <script src="scripts/directives/filter.js"></script>
 <script src="scripts/directives/selectbox.js"></script>
+<script src="scripts/directives/slider.js"></script>
 </body>
 </html>
