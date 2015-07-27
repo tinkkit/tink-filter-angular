@@ -75,8 +75,10 @@
          angular.forEach(newValue,function(data){
           var parent = ctrl.getLinkBoxes(data);
           
-            if(data.link && data.checked){
+            if(data.link){
               select = select.concat(data.link);
+              data.checked = true;
+              data.disabled = false;
               linkChecked = true;
             }else if(parent && parent.selections.indexOf(data) > -1){
               linkChecked = true;
@@ -94,44 +96,7 @@
             angular.forEach(select,function(data){
               data.disabled = false;
             });
-         }         
-
-          /*if(angular.isDefined(newValue)){
-            var onlyInA = newValue.filter(function(current){
-              return oldvalue.filter(function(current_b){
-                  return current_b === current;
-              }).length == 0
-            });
-          console.log(onlyInA)
-          
-            angular.forEach(newValue,function(data){
-              var parent = ctrl.getLinkBoxes(data);
-
-              if(parent && parent.linkedObj){
-                if(data.checked){
-                  angular.forEach(data.link,function(v){
-                    var index = parent.linkedObj.selections.indexOf(v);
-                    parent.linkedObj.selections[index].disabled = false;
-                  })
-                }else{
-                  angular.forEach(parent.linkedObj.selections,function(v,k){
-                    v.disabled = false;
-                  })
-                }
-              }
-
-              if(data.selections && data.checked){
-                angular.forEach(data.selections,function(val){
-                  ctrl.addSelectBox(val);
-                });
-              }else if(data.selections && !data.checked){
-                angular.forEach(data.selections,function(val){
-                  ctrl.removeSelectBox(val);
-                });
-              }
-              
-            })
-          }*/
+         };
         },true);
 
         scope.boxChanged = function(data,parent){
@@ -142,8 +107,8 @@
             }
           }else{
             if(indexChecked !== -1){
-
-              angular.forEach(parent.linkedObj.selections,function(v){
+              var par = parent.linkedObj || parent;
+              angular.forEach(par.selections,function(v){
                   v.checked = false;
                   var indexSelect = scope.tinkSelected.indexOf(v);
                   if(indexSelect > -1){
@@ -153,32 +118,7 @@
               indexChecked = scope.tinkSelected.indexOf(data);
               scope.tinkSelected.splice(indexChecked,1);              
             }
-          }
-          
-         /*if(parent && parent.linkedObj){
-            if(data.checked){
-              angular.forEach(parent.linkedObj.selections,function(v,k){
-                v.disabled = true;
-              })
-              angular.forEach(data.link,function(v){
-                var index = parent.linkedObj.selections.indexOf(v);
-                parent.linkedObj.selections[index].disabled = false;
-              })
-            }else{
-              angular.forEach(parent.linkedObj.selections,function(v,k){
-                v.disabled = false;
-              })
-            }
-          }
-          if(data.selections && data.checked){
-            angular.forEach(data.selections,function(val){
-              ctrl.addSelectBox(val);
-            })
-          }else if(!data.checked){
-            angular.forEach(data.selections,function(val){
-              ctrl.removeSelectBox(val);
-            })
-          }*/
+          };
         }
       }
     };

@@ -1,6 +1,6 @@
 <div>
   <div ng-repeat="selectBox in ctrl.getSelectBoxen()">
     <tink-select-box ng-model="selectBox" select-change="boxChanged($data,$parent)"></tink-select-box>
-    <tink-select-box ng-if="selectBox.linkName" ng-model="selectBox.linkedObj" select-change="boxChanged($data)"> </tink-select-box>
+    <tink-select-box ng-if="selectBox.linkName" ng-model="selectBox.linkedObj" select-change="boxChanged($data,$parent)"> </tink-select-box>
   </div>
 </div>

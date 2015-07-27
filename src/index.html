@@ -12,7 +12,6 @@
   <!-- endbower -->
 </head>
 <body ng-controller="ctrl">
-
 <tink-filter tink-selected="select" ng-model="data"></tink-filter>
 <div slider start="from" end="to"  step="5" callback='set'></div><br/><br/>
 <tink-filter tink-selected="select" ng-model="data"></tink-filter>
@@ -135,6 +134,7 @@
             name:'Vertegenwoordiging'
           }]
         }]
+        scope.select.push(scope.data[0].selections[0])
     }]);
 })();
 
