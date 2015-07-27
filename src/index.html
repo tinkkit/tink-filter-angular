@@ -13,9 +13,9 @@
 </head>
 <body ng-controller="ctrl">
 
-<tink-filter ng-model="data"></tink-filter>
+<tink-filter tink-selected="select" ng-model="data"></tink-filter>
 <div slider start="from" end="to"  step="5" callback='set'></div><br/><br/>
-<tink-filter ng-model="data"></tink-filter>
+<tink-filter tink-selected="select" ng-model="data"></tink-filter>
 
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -39,6 +39,7 @@
     module.controller('ctrl', ['$scope',function (scope) {
         scope.from = new Date('2010');
         scope.to = new Date('2050');
+        scope.select = [];
       scope.data = [{
           name:'Categorie',
           linkName:'type',

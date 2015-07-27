@@ -46,13 +46,13 @@
           var selected = $filter('filter')($scope.ngModel.selections, {checked: true});
           angular.forEach(selected,function(v){
             if(v !== data){
-              v.checked = false;
-              $scope.selectChange({$data:v,$parent:selectbox.parent});
+              //v.checked = false;
+              //$scope.selectChange({$data:v,$parent:selectbox.parent});
             }
           })
-          if(data.checked){
+          //if(data.checked){
             $scope.selectChange({$data:data,$parent:selectbox.parent});
-          }
+          //}
         }
 
       },
