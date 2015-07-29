@@ -5,6 +5,7 @@ describe('tink-skeleton-angular', function() {
   var $compile, $templateCache, scope;
 
   beforeEach(module('tink.filter'));
+  beforeEach(module('templates'));
 
   beforeEach(inject(function (_$rootScope_, _$compile_, _$templateCache_) {
     scope = _$rootScope_.$new();
@@ -12,6 +13,12 @@ describe('tink-skeleton-angular', function() {
     $templateCache = _$templateCache_;
     bodyEl.html('');
     sandboxEl = $('<div>').attr('id', 'sandbox').appendTo(bodyEl);
+
+    var template = $templateCache.get('src/templates/selectbox.html');
+    $templateCache.put('templates/selectbox.html',template);
+    //template = $templateCache.get('src/templates/tinkDatePickerInput.html');
+    //$templateCache.put('templates/tinkDatePickerInput.html',template);
+
   }));
 
   afterEach(function() {
@@ -133,14 +140,25 @@ describe('tink-skeleton-angular', function() {
 
 
   describe('default', function() {
-    it('should run this basic setup',function(){
-      var scope = {selectBox:data,boxChanged:function(d,p){
+    it('set type on controller',function(){
+      var scop = {selectBox:data[0],boxChanged:function(d,p){
 
       }};
-      var element = compileDirective('default',scope);
-
+      var element = compileDirective('default',scop);
+      scope.$apply();
       var ctrl = element.isolateScope().ctrl;
-      console.log(ctrl);
+      expect(ctrl.getTitle()).toBe('Categorie')
+    });
+
+    it('check if the parent is the same',function(){
+      var scop = {selectBox:data,boxChanged:function(d,p){
+
+      }};
+      var element = compileDirective('default',scop);
+      scope.$apply();
+      var ctrl = element.isolateScope().ctrl;
+
+      expect(ctrl.getParent()).toBe(data);
     });
   });
 
