@@ -47,7 +47,7 @@
           }
         });
   
-        slider.noUiSlider.on('update', function( values, handle ) {console.log(values)
+        slider.noUiSlider.on('update', function( values, handle ) {
           safeApply(scope,function(){
             var value1 = new Date(parseInt(values[0]).toString()),
             value2 = new Date(parseInt(values[1]).toString())
