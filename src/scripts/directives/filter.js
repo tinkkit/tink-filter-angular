@@ -152,47 +152,6 @@
           });
         }
         scope.$watchCollection('tinkSelected',watc);
-        //hier komt de
-        scope.$watch('tinkSelected1',function(newValue,oldvalue){
-         /*var select = [];
-
-         if(newValue.length === 0){
-          angular.forEach(ctrl.getSelectBoxen(),function(data){
-            angular.forEach(data.linkedObj.selections,function(v){
-              v.disabled = false;
-            });
-          });
-         }
-
-         var linkChecked = false;
-         angular.forEach(newValue,function(data){
-          var parent = ctrl.getLinkBoxes(data);
-          
-            //enable it
-            data.checked = true;
-            data.disabled = false;
-
-            if(data.link){
-              select = select.concat(data.link);
-              linkChecked = true;
-            }else if(parent && parent.selections && parent.selections.indexOf(data) > -1){
-              linkChecked = true;
-            }
-            if(linkChecked){
-              angular.forEach(ctrl.getSelectBoxen(),function(data){
-                angular.forEach(data.linkedObj.selections,function(v){
-                  v.disabled = true;
-                });
-              }); 
-            }
-          });
-
-         if(select.length !== 0){            
-            angular.forEach(select,function(data){
-              data.disabled = false;
-            });
-         };*/
-        },true);
 
         scope.boxChanged = function(data,parent){
           var indexChecked = scope.tinkSelected.indexOf(data);
@@ -202,18 +161,7 @@
             }
           }else{
             if(indexChecked !== -1){
-              var par = parent.linkedObj || parent;
-              angular.forEach(par.selections,function(v){
-                  //v.checked = false;
-                  var indexSelect = scope.tinkSelected.indexOf(v);
-                  if(indexSelect > -1){
-                    //scope.tinkSelected.splice(indexSelect,1);
-                  }                  
-              })
-              indexChecked = scope.tinkSelected.indexOf(data);
-              if(indexChecked !== -1){
-                scope.tinkSelected.splice(indexChecked,1);              
-              }
+              scope.tinkSelected.splice(indexChecked,1);              
             }
           };
         }
