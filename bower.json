@@ -1,6 +1,6 @@
 {
   "name": "tink-filter-angular",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": [
     "dist/tink-filter-angular.js"
   ],
